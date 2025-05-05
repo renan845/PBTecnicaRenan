@@ -1,0 +1,6 @@
+@PBTecnicaRenan_HostAddress = http://localhost:5070
+
+GET {{PBTecnicaRenan_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
