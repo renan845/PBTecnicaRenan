@@ -1,13 +1,28 @@
+using Microsoft.EntityFrameworkCore;
+using PBTecnicaRenan.Data;
+using PBTecnicaRenan.Interfaces;
+using PBTecnicaRenan.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<DataContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")!));
+
+builder.Services.AddControllers();
+builder.Services.AddScoped<DataImportService>();
+
+// Registra IDataSetService y DataSetService antes de llamar a builder.Build()
+builder.Services.AddScoped<IDataSetService, DataSetService>(); 
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.MapControllers();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -16,14 +31,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+var summaries = new[] 
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

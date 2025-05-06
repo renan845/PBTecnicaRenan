@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PBTecnicaRenan")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2da663fb970daf2bf9b1dcfcf33072a1a6d35971")]
 [assembly: System.Reflection.AssemblyProductAttribute("PBTecnicaRenan")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PBTecnicaRenan")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
